@@ -1,0 +1,49 @@
+--question2 programme qui affiche les valeurs d'une colonne d'une table !
+
+do $$ 
+<<first_block>>
+declare
+  curs refcursor;
+  curs1 cursor for select * from produit;
+  var character varying (25);
+begin
+   for rec in curs1 loop
+   select rec.pro_libelle  into var from produit ;
+   raise notice 'le produit est %', var;
+   end loop;
+end first_block $$;
+
+
+--question3 un programme qui vérifie dans une colonne de table si la banane EXISTe
+do $$ 
+<<first_block>>
+declare
+  curs refcursor;
+  curs1 cursor for select * from produit;
+  var character varying (25);
+begin
+   for rec in curs1 loop
+   select rec.pro_libelle  into var from produit ;
+      	if var = 'banane' then raise notice 'banane exists';
+	  		else raise notice 'banane doesn''t exist';
+		end if;
+   end loop;
+end first_block $$;
+
+--question4-5-6 fonction qui retourne le resultat de la division x/y avec une gestion d'exception, y=0
+CREATE OR REPLACE FUNCTION div(x float, y float) RETURNS float AS $$
+        declare
+		div float :=0;
+		
+		BEGIN
+               div := x/y;
+			   exception
+			   
+			   	   when   division_by_zero  then raise exception 'la division est impossible car';
+			   	
+		
+			   return div;
+        END;
+$$ LANGUAGE plpgsql;
+
+--question5-6 fonction pour multiplier deux nombres 

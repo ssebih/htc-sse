@@ -1,0 +1,122 @@
+  174  mkdir appolo_13
+  175  cd appolo_13
+  176  git init
+  177  ls
+  178  ls -a
+  179  cd .git
+  180  ls
+  181  cd :
+  182  cd ..
+  183  git status
+  184  touch file1.txt
+  185  git status
+  186  git add file1.txt
+  187  git status
+  188  git commit -m
+  189  git commit -m "my_first_file"
+  190  git status
+  191  git log
+  192* touch file3.txt
+  193  git status
+  194  git add  file2.txt
+  195  git status
+  196* git
+  197  git commit -m "my created 2nd file"
+  198  git status
+  199  git config --global user.email htc.sse1221@gmail.com
+  200  touch file3.txt file4.txt
+  201  git config --global user.name "salim sebih"
+  202  git add  file3.txt
+  203  rm file1
+  204  rm file1.txt
+  205  git status
+  206  git add  file4.txt
+  207  git status
+  208  git log
+  209  git status
+  210  git add .
+  211  git commit -m "last commit"
+  212  git status
+  213  git remote add origin https://github.com/ssebih/sse-git.git
+  214  git push
+  215  git push -u origin master
+  216  git branch appolo_13-146
+  217  git branch -list
+  218  git branch --list
+  219  git checkout appolo_13-146
+  220  git branch --list
+  221  touch file1.txt
+  222*
+  223  git commit -ad "last commit with branhc 16-146"
+  224  git commit -ad file1.txt "last commit with branhc 16-146"
+  225  git commit -ad "last commit with branhc 16-146"
+  226  git commit -am file1.txt "last commit with branhc 16-146"
+  227  git status
+  228  git add .
+  229  git status
+  230  git commit -am file1.txt "last commit with branhc 16-146"
+  231  git commit -am  "last commit with branhc 16-146"
+  232  git commit -am file1.txt "last commit with branhc 16-146"
+  233  git checkout master
+  234  git checkout appolo_13-146
+  235  git checkout master
+  236  touch file5.txt
+  237*
+  238  git commit -am "commit file5 dans la branche master"
+  239  git status
+  240  checkout appolo_13-146
+  241  git chekout appolo_13-146
+  242  git checkout appolo_13-146
+  243  touch fil6.txt
+  244  git checkout master
+  245  git status
+  246  touch file8.txt
+  247  git checkout appolo_13-146
+  248  git status
+  249  git checkout master
+  250  git add file8.txt
+  251  git checkout appolo_13-146
+  252  git checkout master
+  253  git status
+  254  git add .
+  255  git commit - "tout commité"
+  256  git commit -m "tout commité"
+  257  git status
+  258  git checkout appolo_13-146
+  259  git status
+  260  git checkout master
+  261  git merge appolo_13-146
+  262  git log
+  263  git diff
+  264  git diff master appolo_13-146
+  265  git checkout jira-95
+  266  git checkout -b jira-95
+  267  touch file9.txt
+  268  git status
+  269  git stash
+  270  git add .
+  271  git stash
+  272  git checkout appolo_13-146
+  273  vi file1
+  274  vi file1.txt
+  275  git status
+  276  git commit -m "commité apres avoir"
+  277  git status
+  278  git add .
+  279  git commit -m "commité apres avoir"
+  280  git status
+  281  git checkout appolo_13-146
+  282  git checkout jira-95
+  283  git status
+  284  git stash --list
+  285  git stash list
+  286  git stash pop
+  287  git commit am "commité file9"
+  288  git status
+  289  git add .
+  290*
+  291* git
+  292  git checkout master
+  293  git merge jira-95
+  294  git history
+  295  history

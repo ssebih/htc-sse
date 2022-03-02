@@ -1,0 +1,39 @@
+==========================================
+DEMO TRIGGER
+==========================================
+
+DROP TABLE EMP;
+
+
+CREATE TABLE emp (
+    nom_employee text,
+    salaire integer,
+    date_dermodif timestamp,
+    utilisateur_dermodif text
+);
+
+
+CREATE FUNCTION emp_stamp() RETURNS trigger AS $emp_stamp$
+
+BEGIN
+-- Verifie que nom_employe et salary sont donnés
+    IF NEW.nom_employe IS NULL THEN
+      -- pour faire exit
+      RAISE EXCEPTION 'nom_employe ne peut pas être NULL';
+    END IF;
+
+-- Rappelons-nous qui a changé le salaire et quand
+RAISE NOTICE 'ancien employee: % ', OLD.nom_employee;
+        NEW.date_dermodif := current_timestamp;
+        NEW.utilisateur_dermodif := current_user;
+RETURN NEW;
+END;
+$emp_stamp$ LANGUAGE plpgsql;
+
+
+CREATE TRIGGER emp_stamp BEFORE INSERT OR UPDATE ON emp
+    FOR EACH ROW EXECUTE PROCEDURE emp_stamp();
+    
+    
+insert into emp (nom_employe,salaire) values('rachid',201);
+

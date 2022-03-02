@@ -1,0 +1,201 @@
+======================================================
+CONTENUS
+
+Commandes usuelles
+Utilisation de vi
+Execution de scripts
+Déclarations de variable
+Operateurs de comparaison
+Opérateurs logique
+structures conditionnelles
+Boucle ordinale
+boucle conditionnelle
+Les fonctions
+Lecture au clavier
+La gestion des erreurs
+======================================================
+Commandes usuelles
+
+La création implique le caractère nouveau du fichier
+mkdir [DEST][nom]
+Exemple : mkdir DATA
+
+Suppression de fichier et répertoires
+La suppression implique l’effacement complet du fichier
+rm [-d][DEST][nom]
+Exemple, fichier : rm fichier.txt
+Exemple, répertoire : rm -d DATA
+
+Copie de fichiers
+La copie implique la création d’un autre exemplaire de notre fichier
+cp [SOURCE][nom] [DEST][nom]
+Exemple : cp C:\myDATA\fichier.txt d:\yourDATA\fichier.txt
+
+Déplacer et renommer un fichier
+Le déplacement implique le changement de destination de notre fichier. 
+mv [SOURCE][nom]  [DEST][nom]
+Exemple : C:\myDATA\fichier.txt d:\otherDATA\fichier.txt
+
+
+===============================================
+Utilisation de vi
+
+vi [nom_fichier]
+
+[esc] 		changer mode éditeur <--> commande
+[i]			insertion
+[:q]		Quitte l'éditeur (sans sauvegarder)
+[:q!]		Force l'éditeur à quitter sans sauvegarder
+[:wq]		Sauvegarde le document et quitte l'éditeur
+[:filenom]	Sauvegarde le document sous le nom spécifié
+
+Pour remplacer une chaîne de caractère par une autre sur une ligne :
+[:s/chaine_a_remplacer/chaine_remplacante/]
+
+Il est possible de la généraliser à tout le document grâce à la syntaxe suivante :
+[:%s/chaine_a_remplacer/chaine_remplacante/]
+
+==============================================
+Execution de scripts
+
+1- [arborescence]/fichier.sh
+2- bash fichier.sh
+3- ./fichier.sh
+4- fichier.sh avec #[arborecence interpreteur]
+5- export PATH=$PATH:/home/[..]/mes_scripts
+
+=============================================
+Déclaration de variable
+Var1=bonjour
+echo $var1
+
+var2=1
+echo var2
+=============================================
+Operateur de comparaison
+-eq	est égal à
+-ne	n'est pas égal à
+-gt	est plus grand que
+-ge	est plus grand ou égal à
+-lt	est plus petit que
+-le	est plus petit ou égal à
+
+Opérateur logique :
+!	NOT Negation
+&&	ET  Logique
+||	OU  Logique
+
+==============================================
+structure conditionnelle
+IF [test] THEN ELSE
+
+var1="foo bar baz" var2="baz" 
+if [[ $var1 == *$var2 ]]; then 
+echo "match"; 
+else 
+
+echo "no match"; 
+
+fi
+
+------------------------------------------------
+
+if (( "$nombre1" > "$nombre2" )); then
+echo plus grande
+
+elif  (( "$nombre1" > "$nombre2" ));
+echo plus petit then
+
+else 
+echo égale
+
+fi
+-------------------------------------------------
+CASE
+
+var=2;
+case $nom in 
+"1") echo "case 1";;
+"2") echo "case 2";;
+"3") echo "case 3";;
+*) echo "Aucun des trois!";;
+esac;
+=================================================
+Boucle ordinale
+
+for (( var=valeurMin; var<=valeurMax; var++ ))
+do
+     commande
+done
+
+--------------------------------------------------
+
+for i in {1..10} do
+    echo "$i"
+Done
+
+--------------------------------------------------
+
+personnes="Bill Paul John"
+
+for nom in $personnes do
+
+  echo "Bonjour $nom"
+
+done
+
+--------------------------------------------------
+
+for i in $( cat users.txt ); do
+    echo $i
+done
+============================================
+boucle conditionnelle
+
+while [ $reponse != 'bonjour' ]
+do
+  read -p 'Dites "bonjour" : ' reponse
+done
+
+============================================
+Les fonctions
+
+
+function ma_foncion() {
+
+    age=20
+    if [ $age -gt 18 ]; then
+        echo "Adulte";return
+      
+}
+=============================================
+Lecture au clavier
+
+La commande read lit son entrée standard et affecte les valeurs saisies dans la variable passés en argument.
+
+$ read var1
+coucou
+$ echo $var1
+coucou
+$
+============================================
+La gestion des erreurs
+
+Suite à l’exécution d’une commande, il est possible de connaitre le succès ou un échec d’exécution. Le système renvoie la valeur 0 en cas de succès et non nulle en cas d'échec. Par conséquent, vous pouvez utiliser le $? et régler les choses en conséquence.
+
+echo $?
+
+[command]
+if [ $? -gt 0 ] then
+gerer_error 
+fi
+
+
+
+
+
+
+
+
+
+

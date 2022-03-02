@@ -1,0 +1,3 @@
+variable = salim
+
+echo "${#variable}"

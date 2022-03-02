@@ -1,0 +1,10 @@
+for i in $(cat reponse.txt); do
+
+
+if [[ $i == "mr" ]]; then 
+echo "yes"; 
+else 
+echo "no"
+
+    
+done 

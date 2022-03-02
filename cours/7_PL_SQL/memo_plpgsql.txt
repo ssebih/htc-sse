@@ -1,0 +1,349 @@
+
+DECLARATION
+PROGRAMME
+UNE CONDITION
+UNE BOUCLE
+PROCEDURE
+FONCTION
+EXEMPLE(S)
+  - programme(s)
+  - procedure(s)
+  - fonction(s)
+LES CURSEURS
+LES CURSEURS & FETCH
+GESTION EXCEPTION
+
+
+
+
+=================================================
+DECLARATION
+=================================================
+id_uti 		integer DEFAULT 32;
+tx_uti		CONSTANT integer := 10;
+quantité 	numeric(5);
+price 		decimal(7,2);
+message		text:= 'hello world';
+message		varchar:= 'hello world';
+bln			boolean:=true;
+ma_ligne 	nom_table%ROWTYPE;
+mon_champ 	nom_table.nom_colonne%TYPE;
+une_ligne 	RECORD;
+une_ligne 	refcursors;
+
+ENUM TYPE
+CREATE TYPE week AS ENUM ('Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun') ;
+
+
+=================================================
+PROGRAMME
+=================================================
+
+DO language plpgsql $$
+DECLARE
+--declaration de variable
+BEGIN
+--instruction
+END
+$$;
+
+/* un exemple */
+
+DO language plpgsql $$
+
+DECLARE
+enam TEXT;
+BEGIN
+  select pro_libellE into enam from produit where pro_id=1;
+  RAISE NOTICE ' libelle du produit % ', enam;
+END
+$$;
+
+=================================================
+UNE CONDITION
+=================================================
+DO language plpgsql $$
+DECLARE
+--déclaration de variable
+bln boolean:=true;
+
+BEGIN
+--instruction
+
+IF bln THEN 
+	RAISE NOTICE ' ma condition est vrai ';
+ELSE
+	RAISE NOTICE ' ma condition est fausse ';
+END IF;
+
+
+END
+$$;
+
+
+=================================================
+UNE BOUCLE
+=================================================
+
+DO language plpgsql $$
+
+DECLARE
+myname varchar:='banane';
+BEGIN
+FOR i IN 1 .. 15 LOOP
+	RAISE NOTICE ' le compteur i vaut -> % ',i;
+END LOOP;
+END
+$$;
+
+
+=================================================
+PROCEDURE
+=================================================
+
+CREATE FUNCTION nomFunction () RETURNS void AS $$
+DECLARE
+--déclaration de variable
+BEGIN
+--instruction
+END
+$$ LANGUAGE 'plpgsql'
+
+
+=================================================
+FONCTION
+=================================================
+
+CREATE FUNCTION nomFunction (type:integer, text) RETURNS [type] AS $$
+DECLARE
+--déclaration de variable
+BEGIN
+--instruction
+END
+$$ LANGUAGE 'plpgsql'
+
+
+
+
+
+=================================================
+EXEMPLE (programme)
+=================================================
+
+DO language plpgsql $$
+DECLARE
+myrec RECORD;
+myname varchar;
+BEGIN
+    myname='banane';
+    RAISE NOTICE 'hello, world!';
+
+    SELECT INTO myrec * FROM produit WHERE pro_libelle = myname;
+    IF NOT FOUND THEN
+        RAISE NOTICE 'produit % not found', myname;
+    ELSE
+        RAISE NOTICE 'produit % found', myname;
+    END IF;
+END
+$$;
+
+================================================
+EXEMPLE (procedure) - creation de la procedure
+=================================================
+CREATE FUNCTION test_void()  RETURNS void AS $$
+
+DECLARE
+myrec RECORD;
+myname varchar;
+BEGIN
+    myname='banane';
+    RAISE NOTICE 'hello, world!';
+
+    SELECT INTO myrec * FROM produit WHERE pro_libelle = myname;
+    IF NOT FOUND THEN
+        RAISE NOTICE 'produit % not found', myname;
+    ELSE
+        RAISE NOTICE 'produit % found', myname;
+    END IF;
+    
+END;
+
+$$ LANGUAGE 'plpgsql';
+
+=================================================
+EXEMPLE (procedure) - utilisation de la procedure
+=================================================
+
+
+DO language plpgsql $$
+
+DECLARE
+myrec integer;
+BEGIN
+
+myrec=test_integer();
+
+END
+
+$$;
+
+=================================================
+EXEMPLE (function) - creation de la fonction
+=================================================
+
+CREATE FUNCTION test_integer() RETURNS integer AS $$
+
+DECLARE
+myrec RECORD;
+myname varchar;
+BEGIN
+    myname='banane';
+    RAISE NOTICE 'hello, world!';
+
+    SELECT INTO myrec * FROM produit WHERE pro_libelle = myname;
+    IF NOT FOUND THEN
+        RAISE NOTICE 'produit % not found', myname;
+    ELSE
+        RAISE NOTICE 'produit % found', myname;
+    END IF;
+    return 1;
+END
+$$ LANGUAGE 'plpgsql'
+
+=================================================
+EXEMPLE (function) - utilisation de la fonction
+=================================================
+
+DO language plpgsql $$
+
+DECLARE
+myrec integer;
+BEGIN
+
+ myrec=test_integer();
+
+END
+
+$$;
+
+=================================================
+EXEMPLE (function)
+=================================================
+CREATE or REPLACE FUNCTION getID(id_p integer) RETURNS setof record as $$
+DECLARE
+	rec record;
+BEGIN
+	for rec in		
+		SELECT pro_id , pro_libelle
+        		FROM produit
+		WHERE pro_id = id_p
+        
+        	loop
+		return next rec;
+        	end loop;
+ 
+	RETURN;
+END;
+$$ language 'plpgsql';
+
+SELECT * from getID(1) as (pro_id int, pro_libelle varchar);
+
+=================================================
+EXEMPLE (function)
+=================================================
+CREATE OR REPLACE FUNCTION order_details (order_id int) RETURNS 
+TABLE (txt varchar, qtite smallint, unit numeric, total numeric) AS $$
+
+BEGIN
+--instruction
+RETURN QUERY SELECT 
+		productname as "produit" 
+		, quantity as "quantité"
+		, order_details.unitprice "prix unitaire"
+		, (quantity * order_details.unitprice) as "prix total"
+		FROM products inner join order_details
+		On products.productid = order_details.productid
+		WHERE orderid = order_id;
+
+END;$$ language 'plpgsql';
+
+=================================================
+LES CURSEURS
+=================================================
+DO language plpgsql $$
+DECLARE
+
+
+curs refcursor;
+curs CURSOR FOR SELECT * FROM PRODUIT;
+
+BEGIN
+ 
+ 	FOR rec IN cur loop
+    
+    
+	RAISE NOTICE 'hello,    world! %',rec.pro_libelle;
+   
+    END LOOP;
+END;
+$$;
+=================================================
+LES CURSEURS & FETCH
+FETCH NEXT				Prochain enregistrement
+FETCH LAST				Dernier enregistrement
+FETCH FIRST				Premier enregistrement
+FETCH ABSOLUTE count	Enregistrement position [numéro]
+FETCH RELATIVE count	
+FETCH FORWARD			Enregistrement suivant
+FETCH BACKWARD			Enregistrement précédent
+=================================================
+DO language plpgsql $$
+DECLARE
+cur CURSOR  IS SELECT * FROM produit;
+rec record;
+
+BEGIN
+
+OPEN cur;
+FETCH ABSOLUTE 3 FROM cur INTO rec;
+
+LOOP
+
+EXIT WHEN rec IS NULL;
+
+RAISE NOTICE '%', rec.pro_libelle;
+
+FETCH NEXT FROM cur INTO rec;
+END LOOP;
+
+END
+$$;
+=================================================
+GESTION EXCEPTION
+no_data_found
+division_by_zero
+too_many_rows
+=================================================
+
+DO language plpgsql $$
+DECLARE
+resultat int;
+
+BEGIN
+
+
+
+resultat=1/0;
+
+RAISE NOTICE 'OK';
+
+EXCEPTION
+
+    when division_by_zero then
+       RAISE EXCEPTION 'ko';
+   
+  
+
+
+END
+$$;
