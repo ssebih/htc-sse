@@ -128,7 +128,7 @@ public class Factoriel {
 		while (i <= 10) {
 
 			System.out.println(i);
-			i++; // incrémentation (pour changer le pas d'incrémentation il faut mettre i+=2 (pas =2)
+			i++; // incrémentation
 		}
 	}
 
