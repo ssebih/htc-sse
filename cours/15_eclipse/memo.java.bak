@@ -81,7 +81,7 @@ public class Factoriel {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		long n, result = 1 , i;
-		System.err.println("entrez la valeur de n pour caclculer sa factorielle");
+		System.out.println("entrez la valeur de n pour caclculer sa factorielle");
 		n = scanner.nextInt();
 
 		for (i = 1 ; i <= (n-1); i++) // boucle for, ++i veut dire incrémentation de 1
@@ -130,6 +130,30 @@ public class Factoriel {
 			System.out.println(i);
 			i++; // incrémentation
 		}
+	}
+
+}
+
+/* 7) autre manière pour calculer la factorielle de n */
+
+package facto2.salim;
+
+import java.util.Scanner;
+
+public class Facto2 {
+
+	public static void main(String args[]) {
+		Scanner scan = new Scanner(System.in);
+
+		int n, result, i;
+		System.out.print("Entrez une valeur pour n : ");
+		n = scan.nextInt();
+
+		result = 1;
+		for (i = n; i > 1; i--) {
+			result = result * i;
+		}
+		System.out.println(result);
 	}
 
 }
