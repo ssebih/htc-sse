@@ -1,0 +1,8 @@
+package fr.htc.op;
+
+public class Persons extends Person {
+ public void persons() {
+	 String firstName, lastName;
+		int age = 0;
+ }
+}

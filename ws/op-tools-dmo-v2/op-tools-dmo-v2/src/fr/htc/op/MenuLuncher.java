@@ -16,6 +16,7 @@ public class MenuLuncher {
 	static final int PERSON_LIST = 6;
 	static final int ADD = 7;
 	static final int EXIT = 0;
+	static final int DATE = 8;
 
 	public static void main(String[] toto) {
 		int choice = -1;
@@ -47,6 +48,9 @@ public class MenuLuncher {
 			case ADD:
 				op.add();
 				break;
+			case DATE:
+				System.out.println("date");
+				//op.date()
 			case EXIT:
 				op.exit();
 				break;
@@ -70,6 +74,7 @@ public class MenuLuncher {
 		System.out.println("\t- Moyenne_ecart type              \t\t\tTapez 5");
 		System.out.println("\t- List of Persons                 \t\t\tTapez 6");
 		System.out.println("\t- ADD                             \t\t\tTapez 7");
+		System.out.println("\t- DATE                            \t\t\tTapez 8");
 		System.out.println("\t- Quitter                         \t\t\tTapez 0");
 		System.out.print("\t\t\tFaites votre choix : ");
 	}

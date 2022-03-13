@@ -8,6 +8,9 @@ public class Operations {
 	private static Factoriel Fact = new Factoriel();
 	private static MaxArray Max = new MaxArray();
 	private static AvgEquartType Aveq = new AvgEquartType();
+	private static Add Ad = new Add();
+	private static Pgdc Pgdc = new Pgdc();
+	
 	
 	
 	public void EquationSecondDegre() {
@@ -23,6 +26,7 @@ public class Operations {
 
 	public void pgcd() {
 		System.out.println("PGCD");
+		Pgdc.pgdc();
 	}
 
 	public void maxArray() {
@@ -44,9 +48,10 @@ public class Operations {
 	private void printPersonList(Person[] persons) {
 		String s = persons.length == 1 ? "" : "s";
 		System.out.println("Voici la liste de" + s + " personne" + s + " : ");
-		for (Person p : persons) {
+		for (Person p : persons)
+		
 			System.out.println(p);
-		}
+		
 	}
 
 	private void setUpPersonArrayList(Person[] persons) {
@@ -65,18 +70,14 @@ public class Operations {
 	}
 
 	private Person[] getArrayWithUserSize() {
-		System.out.print("PERSON_LIST \n Entrer le nombre de personnes : ");
+		System.out.print("PERSON_LIST \n "
+				+ "Entrer le nombre de personnes : ");
 		return new Person[scan.nextInt()];
 	}
 
 	public void add() {
 		System.out.println("ADD : 2 numbers ");
-		System.out.print("Entrer le nombre 1 : ");
-		int n1 = scan.nextInt();
-		System.out.print("Entrer le nombre 2 : ");
-		int n2 = scan.nextInt();
-		int somm = n1 + n2;
-		System.out.println("La somme des deux nombres est " + somm);
+		Ad.add();
 	}
 
 	public void exit() {

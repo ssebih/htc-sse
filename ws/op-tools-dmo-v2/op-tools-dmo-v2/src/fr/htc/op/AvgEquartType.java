@@ -34,7 +34,7 @@ public class AvgEquartType {
 			somm = somm + Math.pow((tab[i]), 2);
 			somme = Math.pow((somme + tab[i]) / nbre, 2);
 		}
-		double eca = Math.pow(((somme, nbre) / nbre) - somme, 1/2);
+		double eca = Math.pow((somme, nbre) / nbre) - somme, 1/2);
 		System.out.println("l'écartype est : " + eca);
 	}
 }
