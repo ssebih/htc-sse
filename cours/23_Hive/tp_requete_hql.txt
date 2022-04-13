@@ -1,0 +1,30 @@
+============================================= HIVE  
+============================================= n   -- 4.1 -         
+Création d'une table ORC  CREATE EXTERNAL TABLE IF NOT EXISTS 
+sales_orc (  product_id String,  time_id String,  customer_id 
+String,  promotion_id String,  store_id String,  store_sales 
+String,  store_cost String,  unit_sales String)  STORED AS ORC  
+LOCATION '/user/raj_ops/dmo/hive/sales.orc';  -- 4.2 -         
+Insertion dans une table ORC   INSERT INTO sales_orc(   select  
+product_id ,  time_id ,  customer_id ,  promotion_id,  store_id,  
+store_sales ,  store_cost ,  unit_sales  from sales_raw  );  ------------------------ --4 - Selectionner des tables  select 
+count(*) from sales_raw where store_id='1' ;  ==>le temps 
+d''exécution est du 6 s   select count(*) from sales_part where 
+store_id='1' ;  ==>Le temps d''exécusion est de 2 s   -- 3 
+-          Insert table dans une table de partition  INSERT INTO 
+sales_part(   select  product_id ,  time_id ,  customer_id ,  
+promotion_id,  store_sales ,  store_cost ,  unit_sales ,  store_id 
+from sales_raw );  ------------------- -- 2 -        Création d'une 
+table partitionned   CREATE EXTERNAL TABLE IF NOT EXISTS sales_part 
+(  product_id String,  time_id String,  customer_id String,  
+promotion_id String,  store_sales String,  store_cost String,  
+unit_sales String)  Partitioned by (store_id String)  ROW FORMAT 
+DELIMITED  FIELDS TERMINATED BY ';'  LINES TERMINATED BY '\n'  
+STORED AS TEXTFILE  LOCATION '/user/raj_ops/mma/hive/part.sales' 
+;   -------------------- -- 1 - Creation d'une table simple avec 
+Hive CREATE EXTERNAL TABLE IF NOT EXISTS sales_part (  product_id 
+String,  time_id S tring,  customer_id String,  promotion_id 
+String,  store_id String,store_sales String,  store_cost String,  
+unit_sales String)  ROW FORMAT DELIMITED  FIELDS TERMINATED BY ';'  
+LINES TERMINATED BY '\n'  STORED AS TEXTFILE  LOCATION 
+'/user/raj_ops/fad/hive/sales.raw' ;
