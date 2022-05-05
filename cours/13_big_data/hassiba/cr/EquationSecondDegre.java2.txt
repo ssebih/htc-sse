@@ -1,0 +1,50 @@
+package fr.htc.oprations.menu;
+
+import java.util.Scanner;
+
+
+public class EquationSecondDegre {
+
+
+	public static void main(String[] args) {
+		double a, b, c, x;
+
+		Scanner clavier = new Scanner(System.in);
+		System.out.print("Entrer la valeur de a : ");
+		a = clavier.nextInt();
+		System.out.print("Entrer la valeur de b : ");
+		b = clavier.nextInt();
+		System.out.print("Entrer la valeur de c : ");
+		c = clavier.nextInt();
+
+		if (a == 0){
+			if (b == 0){
+				System.out.println("Equation impossible");	 
+				return;
+			}
+			x=-c/b;
+			//equation 1er degré
+			System.out.println("equation 1er degré: \n x = " + x) ;
+			return;	
+		}
+		// a != 0 : Calcul du Detlta
+		double  delta = (b*b) - 4*a*c;
+
+		if (delta<0){
+			System.out.println("il n'y a pas de racines reelle a l'equation.");
+			return;
+		}
+		if (delta>0){
+
+			double x1 = (-b-Math.sqrt(delta))/(2*a);
+			double x2 = (-b+Math.sqrt(delta))/(2*a);
+			System.out.println("\n\nLes racines sont x1 = " + x1 + " et x2 = " +x2);
+			return;
+		}
+		
+		// Delta == 0
+		x =-b/2*a;
+		System.out.println("x ="+x);			
+	}
+
+}

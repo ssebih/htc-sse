@@ -1,0 +1,42 @@
+
+<repertoire>
+    
+   <personne>
+        <nom>DOE</nom>
+        <prenom>John</prenom>
+        <adresse>
+            <numero>7</numero>
+            <voie >mpasse du chemin</voie>
+            <codePostal>75015</codePostal>
+            <ville>PARIS</ville>
+            <pays>FRANCE</pays>
+        </adresse>
+        <telephones>
+            <telephone >01 02 03 04 05</telephone>
+            <telephone >06 07 08 09 10</telephone>
+        </telephones>
+        <emails>
+            <email >john.doe@wanadoo.fr</email>
+            <email >john.doe@societe.com</email>
+        </emails>
+    </personne>
+	
+     Marie POPPINS
+    <personne>
+        <nom>POPPINS</nom>
+        <prenom>Marie</prenom>
+        <adresse>
+            <numero>28</numero>
+            <voie >avenue de la république</voie>
+            <codePostal>13005</codePostal>
+            <ville>MARSEILLE</ville>
+            <pays>FRANCE</pays>
+        </adresse>
+        <telephones>
+            <telephone >04 05 06 07 08</telephone>
+        </telephones>
+        <emails>
+            <emai>contactpoppins.fr</email>
+        </emails>
+    </personne>
+</repertoire>
