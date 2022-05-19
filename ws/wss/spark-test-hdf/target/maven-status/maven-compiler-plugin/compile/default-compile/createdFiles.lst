@@ -1,0 +1,4 @@
+objects\Customer.class
+fr\htc\spark\hdfs\SparkConfig.class
+fr\htc\spark\hdfs\Main.class
+objects\Sale.class
