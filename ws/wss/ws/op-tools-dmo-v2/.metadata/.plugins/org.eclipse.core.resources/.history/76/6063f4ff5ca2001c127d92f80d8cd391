@@ -1,0 +1,24 @@
+package salim.vente;
+
+import java.io.InputStream;
+import java.util.Scanner;
+
+public class GeneralInformations {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.print("Bonjour combien de ventes voulez vous enregistrer ?");
+		Sales[] tabSales;
+		//int a = scan.nextInt();
+		tabSales = new Sales[scan.nextInt()];
+		
+		for (int i = 0; i < tabSales.length; i++) {
+			System.out.println("entrez la vente n°" +(i+1));
+			System.out.print("nom du produit : ");
+			productNamen=scan.next()  
+			System.out.println("");
+		}
+
+	}
+
+}

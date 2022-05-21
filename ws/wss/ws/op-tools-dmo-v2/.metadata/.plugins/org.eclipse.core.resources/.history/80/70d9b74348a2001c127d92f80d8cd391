@@ -1,0 +1,24 @@
+package salim.objet;
+public class Personnes {
+private String name;
+private String lastName;
+private int age;
+
+
+
+public Personnes (String name, String lastName, int age) {
+	
+	this.name = name;
+	this.age= age;
+	this.lastName= lastName; };
+	
+	
+
+	
+public void printPersonnes() {
+	System.out.println("Nom" + this.name);
+	System.out.println("prenom" + this.lastName);
+	
+	System.out.println("Age" + this.age);
+}
+}

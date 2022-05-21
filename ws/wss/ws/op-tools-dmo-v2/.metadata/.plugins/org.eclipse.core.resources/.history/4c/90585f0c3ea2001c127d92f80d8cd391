@@ -1,0 +1,10 @@
+
+package salim.objet;
+public class ListPersonnes {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}

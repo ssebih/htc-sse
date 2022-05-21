@@ -1,0 +1,5 @@
+#Fri Mar 11 21:36:24 CET 2022
+__DEFAULT__=false
+org.eclipse.sdk.Eclipse.master=true
+org.eclipse.help.ui.localSearch.master=true
+expression=perspective dakest

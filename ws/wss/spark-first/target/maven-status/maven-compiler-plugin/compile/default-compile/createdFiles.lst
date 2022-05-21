@@ -1,0 +1,5 @@
+objects\Customer.class
+config\SparkConfig.class
+fr\htc\spark\tp\Main.class
+objects\Stores.class
+objects\Sale.class

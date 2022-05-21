@@ -1,0 +1,52 @@
+
+package salim.objet;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+
+
+
+public class ListPersonnes {
+	
+	private static Personnes pers = new Personnes(null, null, 0 );
+	
+	
+	
+
+	public static void main(String[] args) {
+		
+		Scanner scan = new Scanner (System.in);
+		System.out.print("combien de personnes voulez vous rentrer ?");
+		int nbrePersonnes = scan.nextInt();
+		Personnes [] tabPersonnes; /// i nitialisation d'un tableau tabPersonnes de types Personnes,
+		tabPersonnes = new Personnes [nbrePersonnes];
+		System.out.println("veuillez vous préparer pour rentrer toutes les personnes avec nom prénom et age");
+		System.out.print("appuyez sur une touche pour commencer !");
+		scan.next();
+		for (int i = 0; i< tabPersonnes.length; i++) {
+			System.out.println("entrez le nom de la personne" +(i+1));
+			String nom = scan.next();
+			System.out.println("entrez le prenom de la personne" +(i+1));
+			String prenom = scan.next();
+			System.out.println("entrez l'age de la personne" +(i+1));
+			int age = scan.nextInt();
+			Personnes person = new Personnes (nom, prenom, age);// création d'une variable person de type Personnes ;
+			tabPersonnes[i] = person;
+			
+		}
+		for (int i = 0; i< tabPersonnes.length; i++) {
+			tabPersonnes[i].printPersonnes();
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+
+}
