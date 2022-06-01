@@ -6,10 +6,15 @@ public class TimeByDay implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	private Integer timeId;
-	private Integer year;
-	private String quarter;
+	 private Integer timeId;
+     private String col1;
+     private String col2;
+     private String col3;
+     private Integer col4;
+     private Integer year;
+     private Integer col6;
+     private Integer col7;
+     private String quarter;
 
 	public static TimeByDay parse(String csvLine) {
 
