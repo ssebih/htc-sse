@@ -1,0 +1,3 @@
+cd E:\install\elk\logstash\logstash-7.9.2\bin
+
+logstash.bat -f ..\..\..\data\import_user.conf -t
